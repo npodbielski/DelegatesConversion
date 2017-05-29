@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -20,6 +21,12 @@ namespace DelegatesConvertion
         private static TConverterDelegate CreateConverterInternal<TConverterDelegate>
                     (Type destinationType, Type sourceType) where TConverterDelegate : class
         {
+            var sourceParams = GetInvokeMethodParams(sourceType);
+            var destParams = GetInvokeMethodParams(destinationType);
+            if (ValidateSignatures(sourceParams, destParams))
+            {
+                return null;
+            }
             var assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("dynamicAssembly"),
                 AssemblyBuilderAccess.RunAndCollect);
             var module = assemblyBuilder.DefineDynamicModule("module");
@@ -35,6 +42,26 @@ namespace DelegatesConvertion
             var type = typeBuilder.CreateType();
             var converter = type.GetMethod("converter").CreateDelegate(typeof(TConverterDelegate)) as TConverterDelegate;
             return converter;
+        }
+
+        private static bool ValidateSignatures(Type[] sourceParams, Type[] destParams)
+        {
+            if (sourceParams.Length == destParams.Length)
+            {
+                for (var i = 0; i < sourceParams.Length; i++)
+                {
+                    if (sourceParams[i] != destParams[i])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private static Type[] GetInvokeMethodParams(Type delegateType)
+        {
+            return delegateType.GetMethod("Invoke").GetParameters().Select(p => p.ParameterType).ToArray();
         }
     }
 }
