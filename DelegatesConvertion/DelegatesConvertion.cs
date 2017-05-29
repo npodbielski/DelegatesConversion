@@ -44,6 +44,11 @@ namespace DelegatesConvertion
             return converter;
         }
 
+        private static Type[] GetInvokeMethodParams(Type delegateType)
+        {
+            return delegateType.GetMethod("Invoke").GetParameters().Select(p => p.ParameterType).ToArray();
+        }
+
         private static bool ValidateSignatures(Type[] sourceParams, Type[] destParams)
         {
             if (sourceParams.Length == destParams.Length)
@@ -57,11 +62,6 @@ namespace DelegatesConvertion
                 }
             }
             return false;
-        }
-
-        private static Type[] GetInvokeMethodParams(Type delegateType)
-        {
-            return delegateType.GetMethod("Invoke").GetParameters().Select(p => p.ParameterType).ToArray();
         }
     }
 }
