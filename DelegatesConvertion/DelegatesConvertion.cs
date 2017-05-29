@@ -1,3 +1,9 @@
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DelegatesConvertion.cs" company="Natan Podbielski">
+//   Copyright (c) 2016 - 2017 Natan Podbielski. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
 using System;
 using System.Linq;
 using System.Reflection;
@@ -19,7 +25,7 @@ namespace DelegatesConvertion
         }
 
         private static TConverterDelegate CreateConverterInternal<TConverterDelegate>
-                    (Type destinationType, Type sourceType) where TConverterDelegate : class
+            (Type destinationType, Type sourceType) where TConverterDelegate : class
         {
             var sourceParams = GetInvokeMethodParams(sourceType);
             var destParams = GetInvokeMethodParams(destinationType);
@@ -31,9 +37,10 @@ namespace DelegatesConvertion
                 AssemblyBuilderAccess.RunAndCollect);
             var module = assemblyBuilder.DefineDynamicModule("module");
             var typeBuilder = module.DefineType("converter_type");
-            var methodBuilder = typeBuilder.DefineMethod("converter", MethodAttributes.Static | MethodAttributes.Public |
-                                                                      MethodAttributes.Final, CallingConventions.Standard,
-                destinationType, new[] { sourceType });
+            var methodBuilder = typeBuilder.DefineMethod("converter",
+                MethodAttributes.Static | MethodAttributes.Public |
+                MethodAttributes.Final, CallingConventions.Standard,
+                destinationType, new[] {sourceType});
             var generator = methodBuilder.GetILGenerator();
             generator.Emit(OpCodes.Ldarg_0);
             generator.Emit(OpCodes.Ldftn, sourceType.GetMethod("Invoke"));
