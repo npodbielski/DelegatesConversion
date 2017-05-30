@@ -8,7 +8,7 @@ using System;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace DelegatesConvertion
+namespace DelegatesConversion
 {
     public delegate void CustomEvent(object sender, EventArgs args);
 
@@ -25,8 +25,8 @@ namespace DelegatesConvertion
         {
             Event += (sender, eventArgs) => { };
 
-            var converter = DelegatesConvertion.CreateConverter<Action<object, EventArgs>>(typeof(CustomEvent));
-            var typelessConverter = DelegatesConvertion.CreateConverter<Action<object, EventArgs>>(typeof(CustomEvent));
+            var converter = DelegatesConversion.CreateConverter<Action<object, EventArgs>>(typeof(CustomEvent));
+            var typelessConverter = DelegatesConversion.CreateConverter<Action<object, EventArgs>>(typeof(CustomEvent));
 
             Action<object, EventArgs> onEvent1 = (sender, eventArgs) =>
             {

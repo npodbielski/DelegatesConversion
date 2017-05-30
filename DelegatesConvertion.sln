@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegatesConvertion", "DelegatesConvertion\DelegatesConvertion.csproj", "{1B826F09-CA9E-478B-8BEB-C63C6C6025F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegatesConversion", "DelegatesConvertion\DelegatesConversion.csproj", "{1B826F09-CA9E-478B-8BEB-C63C6C6025F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

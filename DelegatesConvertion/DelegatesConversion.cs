@@ -9,9 +9,9 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace DelegatesConvertion
+namespace DelegatesConversion
 {
-    internal static class DelegatesConvertion
+    internal static class DelegatesConversion
     {
         public static Func<TSource, Delegate> CreateConverter<TSource>(Type destinationType)
         {

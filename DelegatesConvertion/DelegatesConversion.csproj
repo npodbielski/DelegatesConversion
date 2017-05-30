@@ -7,8 +7,8 @@
     <ProjectGuid>{1B826F09-CA9E-478B-8BEB-C63C6C6025F9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DelegatesConvertion</RootNamespace>
-    <AssemblyName>DelegatesConvertion</AssemblyName>
+    <RootNamespace>DelegatesConversion</RootNamespace>
+    <AssemblyName>DelegatesConversion</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DelegatesConvertion.cs" />
+    <Compile Include="DelegatesConversion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
