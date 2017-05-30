@@ -11,7 +11,7 @@ using System.Reflection.Emit;
 
 namespace DelegatesConversion
 {
-    internal static class DelegatesConversion
+    public static class DelegatesConversion
     {
         public static Func<TSource, Delegate> CreateConverter<TSource>(Type destinationType)
         {
